@@ -88,22 +88,22 @@ socket.on('leave:meeting', async ({ roomId, username }) => {
 });
 
   socket.on("user:call", ({ to, offer }) => {
-    console.log('Sending offer for call:', offer);
+    console.log('Sending offer for call:');
     io.to(to).emit("incomming:call", { from: socket.id, offer });
   });
 
   socket.on("call:accepted", ({ to, ans }) => {
-    console.log('Sending answer for call:', ans);
+    console.log('Sending answer for call:');
     io.to(to).emit("call:accepted", { from: socket.id, ans });
   });
 
   socket.on("peer:nego:needed", ({ to, offer }) => {
-    console.log('Sending offer for negotiation:', offer);
+    console.log('Sending offer for negotiation:');
     io.to(to).emit("peer:nego:needed", { from: socket.id, offer });
   });
 
   socket.on("peer:nego:done",({to,ans})=>{
-    console.log('Sending answer for negotiation:', ans);
+    console.log('Sending answer for negotiation:');
     io.to(to).emit("peer:nego:final", { from: socket.id, ans});
 
   })
